@@ -9,10 +9,8 @@ public class Boomerang
 {
 	private static int mNumberOfNights;
 	private	static int numBoxesInCurrentAppearance;
-	private static int mNumberOfColumns;
-	private static boolean mSecured = false;
 	private static int mNumberOfDistinctStarsInCurrentIteration = 1;
-	private static int mNumberOfDistinctStarsLineNumber = 1; 
+	private static int mPointer = 1; 
 	private static int mContent = 1;
     
 
@@ -40,16 +38,12 @@ public class Boomerang
             			mNumberOfDistinctStarsInCurrentIteration = Integer.parseInt(line);
             		} 
 
-            		System.out.println("lineNumber : " + lineNumber + " mNumberOfDistinctStarsLineNumber : " + mNumberOfDistinctStarsLineNumber + " : " + mNumberOfDistinctStarsInCurrentIteration);
-            		if (lineNumber == (mNumberOfDistinctStarsLineNumber)) {
-            			System.out.println("hello");
+            		System.out.println("lineNumber : " + lineNumber + " mPointer : " + mPointer + " : " + mNumberOfDistinctStarsInCurrentIteration);
+            		if (lineNumber == (mPointer)) {
             			mNumberOfDistinctStarsInCurrentIteration = Integer.parseInt(line);
-            			mNumberOfDistinctStarsLineNumber = mNumberOfDistinctStarsLineNumber + 1 + mNumberOfDistinctStarsInCurrentIteration;
-            			// mNumberOfDistinctStarsLineNumber = mNumberOfDistinctStarsLineNumber + mNumberOfDistinctStarsInCurrentIteration + 1; 
-            			// mNumberOfDistinctStarsLineNumber = mNumberOfDistinctStarsInCurrentIteration + mNumberOfDistinctStarsLineNumber + 1;
+            			System.out.println("Stars coordinates in the next " + mNumberOfDistinctStarsInCurrentIteration + " lines");
+            			mPointer = mPointer + 1 + mNumberOfDistinctStarsInCurrentIteration;
             		} else {
-            			System.out.println("lineNumber" + lineNumber);
-            			mNumberOfDistinctStarsLineNumber = mNumberOfDistinctStarsInCurrentIteration + 1; 
             				
             		}
 
