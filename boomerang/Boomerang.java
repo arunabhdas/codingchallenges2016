@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class Boomerang
 {
@@ -11,8 +12,8 @@ public class Boomerang
 	private	static int numBoxesInCurrentAppearance;
 	private static int mNumberOfDistinctStarsInCurrentIteration = 1;
 	private static int mPointer = 1; 
-	private static int mContent = 1;
-    
+	private static int mCounter = 0;
+   	private static ArrayList<Star> mStarsOnCurrentNight; 
 
 	public static void main(String[] args) {
 
@@ -41,10 +42,26 @@ public class Boomerang
             		System.out.println("lineNumber : " + lineNumber + " mPointer : " + mPointer + " : " + mNumberOfDistinctStarsInCurrentIteration);
             		if (lineNumber == (mPointer)) {
             			mNumberOfDistinctStarsInCurrentIteration = Integer.parseInt(line);
+            			mStarsOnCurrentNight = new ArrayList<Star>();
             			System.out.println("Stars coordinates in the next " + mNumberOfDistinctStarsInCurrentIteration + " lines");
+
             			mPointer = mPointer + 1 + mNumberOfDistinctStarsInCurrentIteration;
             		} else {
-            				
+        				if (mNumberOfDistinctStarsInCurrentIteration == mCounter) {
+        					String arr[] = line.split(" ", 2);
+            				int xpos = Integer.parseInt(arr[0]);
+            				int ypos = Integer.parseInt(arr[1]);
+            				Star s = new Star(xpos, ypos);
+            				mStarsOnCurrentNight.add(s);
+            				s.toS();
+            				mCounter++;
+
+        				}
+
+        				for (Star star : mStarsOnCurrentNight) {
+        					star.toS();
+        				}	
+
             		}
 
             	}
